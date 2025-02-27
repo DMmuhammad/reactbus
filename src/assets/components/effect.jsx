@@ -7,9 +7,13 @@ function Effect() {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
+    setLoad(true);
     fetch(`https://jsonplaceholder.typicode.com/${type}`)
       .then((response) => response.json())
-      .then((json) => setData(json), setLoad(false));
+      .then((json) => {
+        setData(json);
+        setLoad(false);
+      });
   }, [type]);
 
   return (
